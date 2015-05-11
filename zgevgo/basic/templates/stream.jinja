@@ -1,0 +1,35 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+  <div class="section">
+    <strong>Actions:</strong>
+    <div>stream: {{ object }}</div>
+    <div class="row section">
+      <div class="col-md-6">
+        <div>
+          <label>console</label>
+          <pre id="console"></pre>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="message-box">author:</label>
+          <input class="form-control" id="author-input" type="text" value="me"/>
+        </div>
+        <div class="form-group">
+          <label for="message-box">message:</label>
+          <textarea class="form-control" rows="5" id="message-input">new message</textarea>
+        </div>
+        <div class="form-group">
+          <button id="send-msg" class="btn btn-default">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <div id="ws-url-ref" data-value="{{ ws_url }}"></div>
+  <div id="stream-ref" data-value="{{ object.id }}"></div>
+  <script src="{{ static('js/stream.js') }}"></script>
+{% endblock %}

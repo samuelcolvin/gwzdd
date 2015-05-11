@@ -1,0 +1,12 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+  <div class="section">
+    <strong>Streams:</strong>
+    {% for stream in streams %}
+      <div>
+        <a href="{{ url('stream', stream.id) }}">{{ stream }}</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

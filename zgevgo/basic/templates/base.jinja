@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title>zgevgo</title>
-  <meta name="description" content="Gevent, websocket, zmq, django, docker experiment">
+  {% set title = title or 'gwzdd' %}
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ title }}">
   <meta name="author" content="Samuel Colvin">
 
   <link rel="stylesheet" href="{{ static('libs/css/bootstrap.min.css') }}">
@@ -12,35 +13,31 @@
 </head>
 <body>
   <div class="container">
-{#    <h1>{{ title or 'Gevent, websocket, zmq, django, docker experiment' }}</h1>#}
-    <h1>ws</h1>
-    <div class="section">
-      <button id="open" class="btn btn-default">Open WebSocket</button>
-      <button id="close" class="btn btn-default">Close WebSocket</button>
-    </div>
-    <div class="row section">
-      <div class="col-md-6">
-        <div>
-          <label>Console</label>
-          <pre id="console"></pre>
+    <h1>{{ title }}</h1>
+    {% for message in messages %}
+      {% if 'safe' in message.tags %}
+        <div class="alert alert-info safe">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">{{ _("Close") }}</span>
+          </button>
+          {{ message|safe }}
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="message-box">Message to send:</label>
-          <textarea class="form-control" rows="5" id="message-box"></textarea>
+      {% else %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags or 'default' }}{% endif %}">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">{{ _("Close") }}</span>
+          </button>
+          {{ message }}
         </div>
-        <div class="form-group">
-          <button id="send-msg" class="btn btn-default">Send</button>
-        </div>
-      </div>
-    </div>
+       {% endif %}
+    {% endfor %}
+
+    {% block content %}{% endblock %}
   </div>
   <script src="{{ static('libs/js/jquery.min.js') }}"></script>
   <script src="{{ static('libs/js/bootstrap.min.js') }}"></script>
-  <script>
-    var ws_url = '{{ ws_url }}';
-  </script>
-  <script src="{{ static('js/websocket_con.js') }}"></script>
+  {% block extra_js %}{% endblock %}
 </body>
 </html>
