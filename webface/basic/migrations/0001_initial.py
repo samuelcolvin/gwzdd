@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import zgevgo.basic.models
+import webface.basic.models
 
 
 class Migration(migrations.Migration):
@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             name='Action',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('self_sha', zgevgo.basic.models.ShaField(unique=True, max_length=40, editable=False, db_index=True)),
-                ('parent_sha', zgevgo.basic.models.ShaField(unique=True, max_length=40, editable=False, db_index=True)),
+                ('self_sha', webface.basic.models.ShaField(unique=True, max_length=40, editable=False, db_index=True)),
+                ('parent_sha', webface.basic.models.ShaField(unique=True, max_length=40, editable=False, db_index=True)),
                 ('timestamp', models.DateTimeField()),
                 ('message', models.TextField()),
             ],

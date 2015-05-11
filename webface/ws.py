@@ -8,12 +8,12 @@ from geventwebsocket import WebSocketServer, WebSocketApplication, Resource, Web
 
 THIS_DIR = os.path.dirname(__file__)
 sys.path.append(os.path.join(THIS_DIR, '..'))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'zgevgo.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webface.settings')
 
 import django
 django.setup()
 
-from zgevgo.basic.models import Action, Author
+from webface.basic.models import Action, Author
 
 context = zmq.Context()
 

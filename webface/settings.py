@@ -18,7 +18,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_extensions',
     'django_jinja',
-    'zgevgo.basic'
+    'webface.basic'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -31,9 +31,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'zgevgo.urls'
+ROOT_URLCONF = 'webface.urls'
 
-WSGI_APPLICATION = 'zgevgo.wsgi.application'
+WSGI_APPLICATION = 'webface.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -53,7 +53,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'zgevgo', 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'webface', 'static'),)
 
 context_processors = (
     'django.contrib.auth.context_processors.auth',
